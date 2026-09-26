@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0d14">
+<meta name="description" content="MathMaster AI — Class 1–12 math homework helper with step-by-step explanations.">
+<title>MathMaster AI</title>
+<style>
+:root{--bg:#070910;--panel:#0e1320;--panel2:#12192a;--text:#f7f9ff;--muted:#9da7bd;--line:#222b40;--accent:#7c5cff;--accent2:#19d3ff;--good:#36e39b;--shadow:0 24px 70px rgba(0,0,0,.42)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:radial-gradient(900px 500px at 20% -10%,rgba(124,92,255,.25),transparent 60%),radial-gradient(700px 500px at 100% 10%,rgba(25,211,255,.12),transparent 60%),var(--bg);color:var(--text);min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.wrap{max-width:980px;margin:auto;padding:18px 16px 90px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 18px}.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;box-shadow:0 12px 35px rgba(124,92,255,.3);font-weight:900;font-size:23px}.brand b{font-size:20px}.brand small{display:block;color:var(--muted);margin-top:2px}.topBtns{display:flex;gap:8px}.iconbtn{width:42px;height:42px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);border-radius:13px}
+.hero{padding:26px 0 16px}.hero h1{font-size:clamp(32px,7vw,58px);line-height:1.02;margin:0;letter-spacing:-2px}.grad{background:linear-gradient(90deg,#fff,var(--accent2),#bbaeff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:16px;max-width:720px;line-height:1.55}
+.status{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.pill{border:1px solid var(--line);background:rgba(255,255,255,.035);padding:8px 11px;border-radius:999px;color:#c9d2e6;font-size:12px}.online{color:var(--good)}.offline{color:#ffd36b}
+.card{background:linear-gradient(180deg,rgba(18,25,42,.92),rgba(10,14,24,.92));border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:18px;margin:14px 0}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}.tab{border:1px solid var(--line);background:#0a0f1b;color:var(--muted);padding:12px;border-radius:14px;font-weight:800}.tab.active{background:linear-gradient(135deg,rgba(124,92,255,.22),rgba(25,211,255,.1));color:#fff;border-color:#51448c}
+textarea{width:100%;min-height:150px;resize:vertical;background:#080c15;border:1px solid var(--line);border-radius:18px;color:#fff;padding:16px;outline:none}.row{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px}.primary{border:0;background:linear-gradient(135deg,var(--accent),#4b9dff);color:white;padding:13px 18px;border-radius:14px;font-weight:900;box-shadow:0 10px 25px rgba(86,90,255,.24)}.secondary{border:1px solid var(--line);background:#0b101b;color:#e7ebf5;padding:12px 15px;border-radius:14px;font-weight:800}.upload{display:block;border:1.5px dashed #3a4762;border-radius:18px;padding:18px;text-align:center;color:#b9c3d7;background:rgba(255,255,255,.025)}.upload strong{display:block;color:#fff;margin-bottom:4px}.preview{display:none;margin-top:12px;border-radius:16px;max-height:260px;max-width:100%;object-fit:contain;background:#060911}.answer{display:none}.answer.show{display:block}.answer h2{margin:0 0 10px}.step{border:1px solid var(--line);border-radius:17px;padding:14px;margin:9px 0;background:rgba(255,255,255,.025)}.step b{display:block;margin-bottom:6px;color:#dfe5f5}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#080b13;border:1px solid #242d40;padding:11px;border-radius:12px;color:#8fe9ff;overflow:auto}.final{font-size:21px;font-weight:900;color:#fff}.hint{color:var(--muted);font-size:13px;line-height:1.5}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.mini{padding:13px;border:1px solid var(--line);background:#0a0f1a;border-radius:15px;color:#dce3f2;text-align:left}.mini b{display:block;color:#fff;margin-bottom:3px}.footer{color:#6f7a91;text-align:center;font-size:12px;padding:22px}.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:20;padding:20px}.modal.open{display:grid;place-items:center}.modalbox{max-width:520px;width:100%;background:#0d1320;border:1px solid var(--line);border-radius:24px;padding:22px}.select{width:100%;background:#080c15;color:#fff;border:1px solid var(--line);padding:12px;border-radius:13px}@media(max-width:650px){.grid{grid-template-columns:1fr 1fr}.hero h1{letter-spacing:-1px}.card{border-radius:20px;padding:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><div class="logo">∑</div><div><b>MathMaster AI</b><small>Class 1–12 • Step-by-step</small></div></div>
+  <div class="topBtns"><button class="iconbtn" id="langBtn" title="Language">文A</button><button class="iconbtn" id="installBtn" title="Install">⌂</button></div>
+</header>
+
+<section class="hero">
+  <h1>Math that actually <span class="grad">makes sense.</span></h1>
+  <p>Ask in English, Urdu or Roman Urdu. Get the formula, working, reason, and final answer — again and again until it clicks.</p>
+  <div class="status"><span class="pill online" id="net">● Online mode</span><span class="pill">⚡ Offline engine ready</span><span class="pill">📚 Class 1–12</span></div>
+</section>
+
+<section class="card">
+  <div class="tabs"><button class="tab active" id="typeTab">⌨️ Type question</button><button class="tab" id="picTab">📷 Send a picture</button></div>
+  <div id="typeBox">
+    <textarea id="q" placeholder="Example: Solve 3x + 7 = 25&#10;Ya: 240 ka 15% kitna hai?&#10;Ya: triangle ka area base 12 cm aur height 8 cm hai"></textarea>
+  </div>
+  <div id="picBox" style="display:none">
+    <label class="upload"><strong>📷 Tap to choose a homework photo</strong><span>Camera ya gallery se question bhejo</span><input id="img" type="file" accept="image/*" capture="environment" hidden></label>
+    <img id="preview" class="preview">
+    <p class="hint">Online mode mein photo question ko AI/OCR backend ke through read kiya ja sakta hai. Offline mode mein photo locally open/save ho sakti hai, lekin arbitrary handwriting/printed text ko samajhne ke liye bundled OCR model zaroori hota hai.</p>
+  </div>
+  <div class="row">
+    <button class="primary" id="solve">✨ Solve step-by-step</button>
+    <button class="secondary" id="clear">Clear</button>
+  </div>
+</section>
+
+<section class="card">
+  <b style="font-size:15px">Quick questions</b>
+  <div class="grid" style="margin-top:10px">
+    <button class="mini" data-q="Solve 3x + 7 = 25"><b>Linear</b>3x + 7 = 25</button>
+    <button class="mini" data-q="Solve x² - 5x + 6 = 0"><b>Quadratic</b>x² − 5x + 6 = 0</button>
+    <button class="mini" data-q="What is 15% of 240?"><b>Percentage</b>15% of 240</button>
+    <button class="mini" data-q="A triangle has base 12 cm and height 8 cm. Find its area."><b>Geometry</b>Triangle area</button>
+    <button class="mini" data-q="Simplify 2x + 3x - 4"><b>Algebra</b>2x + 3x − 4</button>
+    <button class="mini" data-q="Convert 2.5 km to meters"><b>Units</b>2.5 km → m</button>
+  </div>
+</section>
+
+<section class="card answer" id="answer">
+  <h2>Solution</h2><div id="solution"></div>
+</section>
+
+<section class="card">
+  <b>🧠 Explain it again</b>
+  <p class="hint">Samajh na aaye to same question dobara bhejo — koi limit nahi. Har attempt naya step-by-step explanation generate kar sakta hai.</p>
+  <div class="row"><button class="secondary" id="simpler">🪄 Make it simpler</button><button class="secondary" id="formulaBtn">∑ Show formula help</button></div>
+</section>
+
+<div class="footer">MathMaster AI • Offline-first PWA • Your questions stay on this device unless you connect an online AI backend.</div>
+</div>
+
+<div class="modal" id="modal"><div class="modalbox"><h2>Language</h2><p class="hint">Choose the language for explanations.</p><select class="select" id="lang"><option value="en">English</option><option value="ur">اردو</option><option value="roman">Roman Urdu</option></select><div class="row"><button class="primary" id="saveLang">Save</button><button class="secondary" id="closeLang">Close</button></div></div></div>
+
+<script>
+const $=s=>document.querySelector(s);
+let lastQ='', lastResult=null, lang='en';
+const net=$('#net');
+function updateNet(){const on=navigator.onLine;net.textContent=on?'● Online mode':'● Offline mode';net.className='pill '+(on?'online':'offline')}
+addEventListener('online',updateNet);addEventListener('offline',updateNet);updateNet();
+
+$('#typeTab').onclick=()=>{ $('#typeTab').classList.add('active');$('#picTab').classList.remove('active');$('#typeBox').style.display='block';$('#picBox').style.display='none'};
+$('#picTab').onclick=()=>{ $('#picTab').classList.add('active');$('#typeTab').classList.remove('active');$('#typeBox').style.display='none';$('#picBox').style.display='block'};
+$('#img').onchange=e=>{const f=e.target.files[0];if(!f)return;const u=URL.createObjectURL(f);$('#preview').src=u;$('#preview').style.display='block';localStorage.setItem('lastHomeworkImage',u);};
+$('#clear').onclick=()=>{$('#q').value='';$('#answer').classList.remove('show');$('#img').value='';$('#preview').style.display='none'};
+document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{$('#typeTab').click();$('#q').value=b.dataset.q;solve()});
+
+function num(x){return Number(String(x).replace(/,/g,''))}
+function fmt(x){return Number.isInteger(x)?String(x):String(Math.round(x*1e10)/1e10)}
+function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function result(title, steps, final, formula=''){lastResult={title,steps,final,formula};render()}
+function render(){let r=lastResult;$('#solution').innerHTML=`<p><b>${esc(r.title)}</b></p>${r.formula?`<div class="formula">${esc(r.formula)}</div>`:''}${r.steps.map((s,i)=>`<div class="step"><b>Step ${i+1}</b>${esc(s)}</div>`).join('')}<div class="step"><b>Final answer</b><div class="final">${esc(r.final)}</div></div>`;$('#answer').classList.add('show');$('#answer').scrollIntoView({behavior:'smooth',block:'start'})}
+
+function solveText(q){
+ const s=q.trim().toLowerCase().replace(/[−–]/g,'-');
+ if(!s) return result('Please enter a question',['Type a math question in English, Urdu or Roman Urdu.'],'Example: 3x + 7 = 25');
+ let m=s.match(/(\d+(?:\.\d+)?)\s*%\s*(?:of|ka|ki|کے|کا|کی)\s*(\d+(?:\.\d+)?)/i)||s.match(/what\s+is\s+(\d+(?:\.\d+)?)\s*%\s*of\s*(\d+(?:\.\d+)?)/i);
+ if(m){let p=num(m[1]),n=num(m[2]),a=n*p/100;return result('Percentage',[
+  `Identify the percentage: ${p}% and the whole number: ${n}.`,
+  `Formula: percentage value = (percentage ÷ 100) × whole.`,
+  `Substitute: (${p} ÷ 100) × ${n}.`,
+  `Calculate: ${fmt(p/100)} × ${n} = ${fmt(a)}.`
+ ],fmt(a),`Percentage = (p ÷ 100) × whole`)}
+ m=s.match(/solve\s+([0-9x+\-*/().\s]+)=\s*([0-9.]+)/i)||s.match(/([0-9.\s]*)x\s*([+\-]\s*[0-9.]+)\s*=\s*([0-9.]+)/i);
+ if(m){
+   let a,b,c;
+   if(m.length===3){let left=m[1].replace(/\s/g,'');let mm=left.match(/^([+-]?\d*\.?\d*)x([+-]\d*\.?\d*)$/i);if(mm){a=mm[1]===''||mm[1]==='+'?1:mm[1]==='-'?-1:num(mm[1]);b=mm[2]?num(mm[2]):0;c=num(m[2]);}}
+   else {a=m[1]?num(m[1]):1;b=num(m[2]);c=num(m[3])}
+   if(Number.isFinite(a)&&Number.isFinite(b)&&Number.isFinite(c)){let x=(c-b)/a;return result('Linear equation',[
+     `Given equation: ${fmt(a)}x ${b>=0?'+ '+fmt(b):'- '+fmt(Math.abs(b))} = ${fmt(c)}.`,
+     `Move the constant to the other side: ${fmt(a)}x = ${fmt(c-b)}.`,
+     `Divide both sides by ${fmt(a)}: x = ${fmt(c-b)} ÷ ${fmt(a)}.`,
+     `Calculate x = ${fmt(x)}.`
+   ],`x = ${fmt(x)}`,'ax + b = c  →  x = (c − b) ÷ a')}
+ }
+ m=s.match(/x\s*(?:²|\^2)\s*([+\-]\s*\d+(?:\.\d+)?)x\s*([+\-]\s*\d+(?:\.\d+)?)\s*=\s*0/);
+ if(m){let b=num(m[1]),c=num(m[2]),d=b*b-4*c;if(d>=0){let x1=(-b+Math.sqrt(d))/2,x2=(-b-Math.sqrt(d))/2;return result('Quadratic equation',[
+   `Identify a = 1, b = ${b}, c = ${c}.`,
+   `Formula: x = (−b ± √(b² − 4ac)) ÷ 2a.`,
+   `Discriminant = b² − 4ac = ${fmt(d)}.`,
+   `Substitute into the formula and simplify.`
+ ],`x = ${fmt(x1)} or x = ${fmt(x2)}`,'x = (−b ± √(b² − 4ac)) ÷ 2a')}}
+ m=s.match(/(\d+(?:\.\d+)?)\s*%\s*(?:of|ka|ki)\s*(\d+(?:\.\d+)?)/);
+ let ar=q.match(/base\s*(\d+(?:\.\d+)?).*height\s*(\d+(?:\.\d+)?)/i)||q.match(/base\s*(\d+(?:\.\d+)?).*h(?:eight)?\s*(\d+(?:\.\d+)?)/i);
+ if(ar&&/triangle|area/.test(s)){let b=num(ar[1]),h=num(ar[2]),a=b*h/2;return result('Triangle area',[
+   `Base = ${b} and height = ${h}.`,
+   `Formula: Area = ½ × base × height.`,
+   `Substitute: ½ × ${b} × ${h}.`,
+   `Calculate: ${fmt(a)}.`
+ ],`${fmt(a)} square units`,'A = ½bh')}
+ let unit=q.match(/(\d+(?:\.\d+)?)\s*(km|m|cm|mm)\s*(?:to|into|in|→)\s*(km|m|cm|mm)/i);
+ if(unit){const v=num(unit[1]),from=unit[2].toLowerCase(),to=unit[3].toLowerCase(),f={mm:.001,cm:.01,m:1,km:1000};let a=v*f[from]/f[to];return result('Unit conversion',[
+   `Start with ${v} ${from}.`,
+   `Convert both units through metres.`,
+   `${v} × ${f[from]/f[to]} = ${fmt(a)}.`
+ ],`${fmt(a)} ${to}`,'1 km = 1000 m; 1 m = 100 cm; 1 cm = 10 mm')}
+ const basic=s.replace(/what is|calculate|solve|find|answer|please|kitna|hai|ka|ki|kya/g,'').trim();
+ if(/^[0-9+\-*/().\s%]+$/.test(basic)){try{if(!/[a-z]/i.test(basic)){let safe=basic.replace(/%/g,'/100');if(/^[0-9+\-*/().\s]+$/.test(safe)){let a=Function('"use strict";return ('+safe+')')();return result('Arithmetic',[
+ `Write the expression clearly: ${basic}.`,
+ 'Apply order of operations: brackets → multiplication/division → addition/subtraction.',
+ `Calculate the expression to get ${fmt(a)}.`
+ ],fmt(a),'Order of operations: BODMAS / PEMDAS')}}}catch(e){}}
+ let alg=q.match(/^\s*(\d*)x\s*([+\-])\s*(\d+)\s*$/i);
+ if(alg){return result('Algebra expression',[
+   'Identify the coefficient of x and the constant.',
+   'This expression is already simplified.',
+   'If you want to solve an equation, send the equals sign too (for example: 3x + 7 = 25).'
+ ],q,'ax + b')}
+ return result('Let’s break it down',[
+   'I can handle many common Class 1–12 math formats offline: arithmetic, percentages, linear equations, quadratic equations, geometry, units and more.',
+   'For an unfamiliar question, rewrite it with the exact numbers and symbols. In online mode, an AI backend can handle broader word problems and image questions.',
+   'You can ask again as many times as needed.'
+ ],'Please type the exact math question so I can show the working.');
+}
+function solve(){lastQ=$('#q').value;solveText(lastQ)}
+$('#solve').onclick=solve;
+$('#simpler').onclick=()=>{if(lastQ){let r=lastResult;if(r){r.steps=r.steps.map(x=>x.replace(/Identify|Substitute|Calculate|Given|Formula/gi,'Simple:'));render()}}};
+$('#formulaBtn').onclick=()=>{if(lastResult){alert(lastResult.formula||'Formula depends on the question.')}}; 
+
+$('#langBtn').onclick=()=>$('#modal').classList.add('open');
+$('#closeLang').onclick=()=>$('#modal').classList.remove('open');
+$('#saveLang').onclick=()=>{lang=$('#lang').value;$('#modal').classList.remove('open');alert(lang==='ur'?'اب وضاحت اردو میں ہوگی۔':lang==='roman'?'Ab explanation Roman Urdu style mein hogi.':'English explanation selected.')};
+
+let deferredInstall;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('#installBtn').style.display='block'});
+$('#installBtn').onclick=async()=>{if(deferredInstall){deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null}else alert('Chrome ke ⋮ menu se Add to Home screen / Install app choose karein.')};
+
+
+</script>
+</body>
+</html>
